@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+ {% load static %} 
+<head>
+  <title>Contact Us</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+  
+</head>
+<body>
+<nav class="navbar navbar-inverse" style="background-color:  black;">
+  <div class="container-fluid">
+    <div class="navbar-header" style=" margin-left: 50px;">
+      <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-user"></i> Health Prediction </a>
+    </div>
+    <ul class="nav navbar-nav" style="margin-left:150px;">
+      <li class=""><a href="{% url 'home' %}">Home</a></li>
+      
+       <li><a href="{% url 'about' %}">About Us</a></li>
+       <li><a href="{% url 'gallery' %}">Gallery</a></li>
+       <li><a href="{% url 'contact' %}" style="color: red;">Contact Us</a></li>
+      
+      
+      
+    </ul>
+
+    <div class="container">
+    
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-left:10px;float: right;margin-top: 9px; background-color: red;">Login
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu" style=" position: absolute;
+    top: 100%;
+    right: 1px;
+    z-index: 1000;
+    width: 160px;
+    float: right; padding: 5px 0;
+    margin: 2px 845px 0;
+    font-size: 14px;
+    text-align: left; background-color:black;color: white;">
+    <li><a href="login2.html">ADMIN</a></li>
+    <li><a href="{% url 'login' %}">USER</a></li>
+  </ul>
+    
+  </div>
+    
+</nav>
+
+
+<div class="container">
+  <div class="row">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14719.230492241071!2d75.900585791333!3d22.735390700975525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962e2b039622859%3A0xdd0df8d9fe32ec13!2sKhajrana%2C%20Indore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1649608669666!5m2!1sen!2sin" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h1 style="text-align:center">Contact US</h1>
+      <div class="col-md-6">
+        <h2>Our Address</h2><br>
+        <p> If you have any Question about the services we provide simple use the from below. we try and responds  to all queries and comment within 24 hour.        </p>
+        <h2>Address & Directions</h2>
+        <p><i class="fa fa-map-marker" style="font-size:24px;color:red"></i> Vijay Nagar,Indore (M.P) 452010</p>
+        <p><i class="fa fa-phone" style="font-size:24;color:red"></i> 91+8888999654</p>
+          <p><i class="fa fa-envelope" style="font-size:24px;color:red"></i> healthline101@gmail.com</p> 
+      </div>
+      <div class="col-md-6">
+        <h2> Get in Touch</h2><br><br>
+  <form action="/action_page.php">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="email" class="form-control" id="name" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+<div class="form-group">
+  <label for="mess">Message:</label>
+    <textarea rows="4" cols="50" name="comment" id='mess' class="form-control" form="usrform">
+Enter text here...</textarea>
+</div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-success" style="width:100%">Submit</button>
+  </form>
+
+      </div>
+  </div>
+</div>
+
+<footer class="footer-distributed">
+
+            <div class="footer-left">
+          
+                <h3><span>health prediction system</span></h3>
+
+                <p class="footer-links">
+                    <a href="home.html">Home</a>
+                    |
+                    <a href="#">Blog</a>
+                    |
+                    <a href="about2.html">About</a>
+                    |
+                    <a href="contact.html">Contact</a>
+                </p>
+
+                <p class="footer-company-name">© 2022 health prediction system.</p>
+            </div>
+
+            <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                      <p>Vijay Nagar,Indore(M.P)</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+91 22-27782183</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:support@helthcare.com">support@helthcare.com</a></p>
+                </div>
+            </div>
+
+
+            <div class="footer-right">
+                <p class="footer-company-about">
+                    <span>About Our Health Prediction System </span>
+                A smart health prediction system is defined as a healthcare system that is intended to assist health professionals in their decision- making process regarding to medical situations.</p>
+                <div class="footer-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>

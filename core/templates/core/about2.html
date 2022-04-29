@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <title>About Us</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-inverse" style="background-color:  black;">
+    <div class="container-fluid">
+      <div class="navbar-header" style=" margin-left: 50px;">
+        <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-user"></i> Health Prediction </a>
+      </div>
+      <ul class="nav navbar-nav" style="margin-left:150px;">
+        <li class=""><a href="{% url 'home' %}" >Home</a></li>
+        
+         <li><a href="{% url 'about' %}"  style="color: red;">About Us</a></li>
+         <li><a href="{% url 'gallery' %}">Gallery</a></li>
+         <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        
+        
+        
+      </ul>
+  
+      <div class="container">
+      
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-left:10px;float: right;margin-top: 9px; background-color: red;">Login
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" style=" position: absolute;
+      top: 100%;
+      right: 1px;
+      z-index: 1000;
+      width: 160px;
+      float: right; padding: 5px 0;
+      margin: 2px 845px 0;
+      font-size: 14px;
+      text-align: left; background-color:black;color: white;">
+      <li><a href="login2.html">ADMIN</a></li>
+      <li><a href="{% url 'login' %}">USER</a></li>
+    </ul>
+      
+    </div>
+      
+  </nav>
+
+  <div class="container-fluid">
+  <div class="container text-center" style="background-image: url('about-us-policy-bg.jpg'); margin-top:7px;">
+
+ <h2>About Us</h2>
+      <p><a href="{% url 'home' %}">Home</a>/About Us</p>
+</div> 
+  
+<div class="container text-center">
+    
+      <h2>Our System Provide Smart Health Disease Prediction System</h2><br>
+      
+    </div>
+<div class="container" style="text-align:justify;">
+    <div class="row" >
+      <p >The health industry has been growing a lot from past few years .This technique has gained a lot of importance in medical areas. Ithas been calculated that a care hospital may generate five terabytes of data in the year. </p>
+    </div>
+</div>
+<div class="container" style="margin-top: 94px;">
+    <div class="row">
+      <div class="col-md-4" style="text-align:center;">
+        <img   style="height: auto; width: 283px;" src="{% static 'core/img/about/about1.jpg' %}" class="img-fluid">
+        <h3 >What do We do?</h3>
+        <p>You went into healthcare to help people - we're here to help you. Healthcare clinicians and administrators spend an inordinate amount of time collecting and analyzing information in patient charts. </p>
+      </div>
+
+      <div class="col-md-4" style="text-align:center;">
+        <img  style="height: auto;
+    width: 283px;"  src="{% static 'core/img/about/about2(2).jpg' %}" class="img-fluid">
+         <h3>Our Mission</h3>
+        <p>Our mission is to make it easy for clinicians to deliver the best care to every patient every time.</p>
+      </div>
+
+      <div class="col-md-4" style="text-align:center;">
+        <img style="height: auto;
+    width: 283px;" src="{% static 'core/img/about/about3.jpg' %}" class="img-fluid">
+     <h3>History Of US</h3>
+        <p>A smart health prediction system is defined as a healthcare system that is intended to assist health professionals in their decision- making process regarding to medical situations.</p>
+      </div>
+    </div>
+  </div>
+
+  <div><h2 style="margin-left: 580px;">Meet The Team</h2></div>
+<div class="container" style="margin-top: 85px; margin-left:180px;">
+    <div class="row" style="">
+      <div class="col-md-4" >
+    <img  src="{% static 'core/img/about/2.jpeg' %}" class="img-circle" width="200" height="200" margin-right: 50px;>
+    <p style="margin-top: 10px; margin-left: 60px; margin-right: 50px;" >Dr.Rita Sharma</p>
+    </div>
+
+
+  <div class="col-md-4" >
+    <img src="{% static 'core/img/about/bb.webp' %}" class="img-circle" width="200" height="200" style="margin-right: 50px;">
+     <p style="margin-top: 10px; margin-left: 60px;">Dr. Sk Mathur</p>
+    </div>
+
+    <div class="col-md-4" >
+    <img src="{% static 'core/img/about/cc.jpg' %}" class="img-circle"  width="200" height="200" style="margin-right: 50px;">
+ <p style="margin-top: 10px; margin-left: 70px; ">Dr. Ajay Sharma</p>
+</div>
+</div>
+    
+
+<div class="container" style="margin-top: 85px;">
+    <div class="row" style="">
+      <div class="col-md-4" >
+    <img  src="{% static 'core/img/about/4.jpeg' %}" class="img-circle" width="200" height="200">
+    <p style="margin-top: 10px; margin-left: 70px;">Dr. Bindi Raj</p>
+    </div>
+
+
+  <div class="col-md-4" >
+    <img src="{% static 'core/img/about/1.jpeg' %}"  class="img-circle" width="200" height="200" margin-right: 50px;>
+     <p style="margin-top: 10px; margin-left: 70px;">Dr. Praveen  Mishra</p>
+    </div>
+
+    <div class="col-md-4" >
+    <img src="{% static 'core/img/about/3.jpeg' %}" class="img-circle"  width="200" height="200" style="margin-right: 50px;">
+ <p style="margin-top: 10px; margin-left: 70px;">Dr. Padam Shukla</p>
+</div>
+</div>
+    </div>
+</div>
+</div>
+
+<footer class="footer-distributed">
+
+  <div class="footer-left">
+
+      <h3><span>health prediction system</span></h3>
+
+      <p class="footer-links">
+          <a href="home.html">Home</a>
+          |
+          <a href="#">Blog</a>
+          |
+          <a href="about2.html">About</a>
+          |
+          <a href="contact.html">Contact</a>
+      </p>
+
+      <p class="footer-company-name">© 2022 health prediction system.</p>
+  </div>
+
+  <div class="footer-center">
+      <div>
+          <i class="fa fa-map-marker"></i>
+            <p>Vijay Nagar,Indore(M.P)</p>
+      </div>
+
+      <div>
+          <i class="fa fa-phone"></i>
+          <p>+91 22-27782183</p>
+      </div>
+      <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:support@helthcare.com">support@helthcare.com</a></p>
+      </div>
+  </div>
+
+
+  <div class="footer-right">
+      <p class="footer-company-about">
+          <span>About Our Health Prediction System </span>
+      A smart health prediction system is defined as a healthcare system that is intended to assist health professionals in their decision- making process regarding to medical situations.</p>
+      <div class="footer-icons">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-youtube"></i></a>
+      </div>
+  </div>
+</footer>
+</body>
+</html>

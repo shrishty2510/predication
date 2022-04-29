@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'doctor/css/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'doctor/css/style.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-inverse" style="background-color:  black;">
+  <div class="container-fluid">
+    <div class="navbar-header" style=" margin-left: 50px;">
+      <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-user"></i> Health Prediction </a>
+    </div>
+    <ul class="nav navbar-nav" style="margin-left:150px;">
+      <li class=""><a href="{% url 'home' %}">Home</a></li>
+      
+       <li><a href="{% url 'about' %}">About Us</a></li>
+       <li><a href="{% url 'gallery' %}">Gallery</a></li>
+       <li><a href="{% url 'contact' %}">Contact Us</a></li>
+      
+    </ul>
+</nav>
+<h3 class='text-center'>REGISTER NOW</h3>
+{% if messages %}
+{% for message in messages  %}
+<p {% if message.tags %} class='{{ message.tags}}' {% endif %}>{{message}}</p>
+{% endfor %}
+{% endif %}
+
+<form action="" method="POST" enctype="multipart/form-data" >
+  {% csrf_token %}
+  <div class="container">
+    <div class="row"> 
+      <div class="col-md-6">
+        <div class="form-group">
+           <label for="name">First Name:</label>
+           <input type="text" class="form-control" id="name" placeholder=" Enter First Name" name="first_name">
+        </div>
+        <div class="form-group">
+           <label for="email">Email:</label>
+           <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+        </div>
+        <div class="form-group">
+           <label for="pas">Password:</label>
+           <input type="Password" class="form-control" id="pas" placeholder="Enter Password " name="password1">
+        </div>
+        {% comment %} <div class='form-group'>
+          <label for="datee">Date of Birth:</label>
+          <input type = "date" class="form-control" id='datee',name="dob">
+        </div>   {% endcomment %}
+        <div class="form-group">
+          <label for="name">Address:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter Address" name="address">
+        </div>
+      <p><label for="id_user_type_0">User type:</label> <ul id="id_user_type">
+        <li><label for="id_user_type_0"><input type="radio" name="user_type" value="Doctor" required id="id_user_type_0">
+     Doctor</label>
+    
+    </li>
+        <li><label for="id_user_type_1"><input type="radio" name="user_type" value="Patient" required id="id_user_type_1">
+     Patient</label>
+    
+    </li>
+    </ul></p>
+  </div>
+      <div class="col-md-6">
+         <div class="form-group">
+           <label for="name">Last Name:</label>
+           <input type="text" class="form-control" id="name" placeholder="Enter last name" name="last_name">
+         </div>
+         <div class="form-group">
+           <label for="name">Username:</label>
+           <input type="text" class="form-control" id="name" placeholder="Enter UserName" name="username">
+         </div>
+         
+         <div class="form-group">
+           <label for="pas"> Confirm Password:</label>
+           <input type="Password" class="form-control" id="pas" placeholder="Enter Password " name="password2">
+         </div>
+         <div class="form-group">
+          <label for="img">Image:</label>
+          <input type="file" class="form-control" id="name" placeholder="upload image" name="profile_image" required>
+        </div>
+         
+         <div class="form-group">
+           <label for="name">Contact:</label>
+           <input type="text" class="form-control" id="name" placeholder="Enter contact" name="contact">
+         </div>  
+    </div>
+  </div>   
+    
+<button type="submit" class="btn btn-danger btn-block"> Register</button>
+</div>
+</form>
+
+<footer class="footer-distributed">
+
+  <div class="footer-left">
+
+      <h3><span>health prediction system</span></h3>
+
+      <p class="footer-links">
+          <a href="home.html">Home</a>
+          |
+          <a href="#">Blog</a>
+          |
+          <a href="about2.html">About</a>
+          |
+          <a href="contact.html">Contact</a>
+      </p>
+
+      <p class="footer-company-name">© 2022 health prediction system.</p>
+  </div>
+
+  <div class="footer-center">
+      <div>
+          <i class="fa fa-map-marker"></i>
+            <p>Vijay Nagar,Indore(M.P)</p>
+      </div>
+
+      <div>
+          <i class="fa fa-phone"></i>
+          <p>+91 22-27782183</p>
+      </div>
+      <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:support@helthcare.com">support@helthcare.com</a></p>
+      </div>
+  </div>
+
+
+  <div class="footer-right">
+      <p class="footer-company-about">
+          <span>About Our Health Prediction System </span>
+      A smart health prediction system is defined as a healthcare system that is intended to assist health professionals in their decision- making process regarding to medical situations.</p>
+      <div class="footer-icons">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-youtube"></i></a>
+      </div>
+  </div>
+</footer>
+
+</body>
+</html>

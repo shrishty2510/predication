@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Health prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'doctor/css/footer.css' %}">
+  <style>
+      th{
+          text-align:center;
+      }
+      .header{
+          padding: 10px;
+          color:brown;
+          word-spacing :1.2rem;
+          letter-spacing : 0.4rem;
+          font-weight:bold;
+          margin-top:-18px;
+          margin-bottom:10px;
+      }
+  </style>
+</head>
+<body>
+<section>
+  <nav class="navbar navbar-inverse" style="background-color:  black;">
+    <div class="container-fluid">
+      <div class="navbar-header" style=" margin-left: 50px;">
+        <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-user"></i> Health Prediction </a>
+      </div>
+      <ul class="nav navbar-nav" style="margin-left:150px;">
+        <li class=""><a href="{% url 'doctor' %}" >Home</a></li>
+        <li><a href="{% url 'patientlist' %}" style="color: red;">Patient List </a></li>
+        <li><a href="#">Appointments</a></li>
+        <li><a href="{% url 'updatedetails' %}" >My Details </a></li>
+  
+        
+      </ul>
+      <div class="container-fluid">
+      
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-left:10px;float: right;margin-top: 9px; background-color: red;">{{username}}
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu" style=" position: absolute;
+          top: 100%;
+          right: 1px;
+          z-index: 1000;
+          width: 160px;
+          float: right; padding: 5px 0;
+          margin: 2px 845px 0;
+          font-size: 14px;
+          text-align: left; background-color:black;color: white;">
+          <li><a href="{% url 'changepasspro' %}">Change Password</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+</section>
+<section>
+  <h3 class="alert-info text-center header " >List Of Patients :</h3>
+<div class="container-fluid ">  
+    <div class="row">
+        <div class="col-sm-12 text-center ">
+           {% if patient %}
+             {% for p in patient %}
+             <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 5%;">Id</th>
+                    <th scope="col" style="width:18%;">Full Name</th>
+                    <th scope="col" style="width:20%;">Profile</th>
+                    <th scope="col" style="width:25%;">Email Id</th>
+                    <th scope="col" style="width:10%;">Contact No.</th>
+                    <th scope="col" style="width:40%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">{{p.id}}</td>
+                    <td scope="row">{{p.user.first_name}} {{p.user.last_name}}</td>
+                    <td><img src="{{p.profile_image.url}}" class="mb-2" alt="" , width="100px" height="90px" class=" img-responsive-fluid  mt-4"></td>
+                    <td>
+                        {{p.user.email}}
+                    </td>
+                    <td>{{p.contact}}</td>
+                    <td> <a href="#" target="__blank" class="btn btn-danger">Call</a> </td>
+                  </tr>
+                </tbody>
+              </table>
+
+             {% endfor %}
+           {% endif %}
+        </div>    
+    </div>
+</div>
+
+</section>
+
+  
+
+<footer class="footer-distributed">
+
+  <div class="footer-left">
+
+      <h3><span>health prediction system</span></h3>
+
+      <p class="footer-links">
+          <a href="home.html">Home</a>
+          |
+          <a href="#">Blog</a>
+          |
+          <a href="about2.html">About</a>
+          |
+          <a href="contact.html">Contact</a>
+      </p>
+
+      <p class="footer-company-name">© 2022 health prediction system.</p>
+  </div>
+
+  <div class="footer-center">
+      <div>
+          <i class="fa fa-map-marker"></i>
+            <p>Vijay Nagar,Indore(M.P)</p>
+      </div>
+
+      <div>
+          <i class="fa fa-phone"></i>
+          <p>+91 22-27782183</p>
+      </div>
+      <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:support@helthcare.com">support@helthcare.com</a></p>
+      </div>
+  </div>
+
+
+  <div class="footer-right">
+      <p class="footer-company-about">
+          <span>About Our Health Prediction System </span>
+      A smart health prediction system is defined as a healthcare system that is intended to assist health professionals in their decision- making process regarding to medical situations.</p>
+      <div class="footer-icons">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-youtube"></i></a>
+      </div>
+  </div>
+</footer>
+
+</body>
+</html>

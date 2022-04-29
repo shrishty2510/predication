@@ -1,0 +1,29 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+#id_user_type{
+    list-style-type: none;
+    display: inline-flex;
+    
+}
+
+#id_user_type > li{
+    padding-left: 10px;
+}
+
+.success{
+    color: green;
+    font-size: 25px;
+    font-weight: bold;
+}
+.error{
+    color: red;
+    font-size: 25px;
+
+}
+.errorlist{
+    color: red;
+    font-size: 18px;
+}

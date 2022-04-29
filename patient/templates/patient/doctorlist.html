@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Patient dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'patient/css/footer.css' %}">
+</head>
+<body>
+
+
+<section>
+    <nav class="navbar navbar-inverse" style="background-color:  black;">
+        <div class="container-fluid">
+          <div class="navbar-header" style=" margin-left: 50px;">
+            <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-user"></i>Health Prediction </a>
+          </div>
+          <ul class="nav navbar-nav" style="margin-left:150px;">
+            <li class=""><a href="{% url 'patient' %}"  style="color: red;">Home</a></li>
+      
+            
+            <li ><a href="#"> Search Doctor</a></li>
+            <li ><a href="Add Disease.html.html"> Search Disease</a></li>
+           
+            <li ><a href="{% url 'feedback' %}">Feedback</a></li>
+            
+            
+          </ul>
+          <div class="container">
+          
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-left:10px;float: right;margin-top: 9px; background-color: red;">{{username}}
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu" style=" position: absolute;
+          top: 100%;
+          right: 1px;
+          z-index: 1000;
+          width: 160px;
+          float: right; padding: 5px 0;
+          margin: 2px 845px 0;
+          font-size: 14px;
+          text-align: left; background-color:black;color: white;">
+          <li><a href="{% url 'changepasspro' %}">Change Password</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+          
+        </div>
+      </nav>
+</section>
+ 
+<section>
+   {% for form in fm %}
+<div class="jumbotron" style="background-color:white;">
+  <div class="container" style="width:800px; border:2px solid grey; border-radius:10px; background-color:lightgrey;">
+    <div class='center'><img src="{{fm.image.url}}" alt="" , width="200px" height="200px" class="img-thumbnail img-responsive-fluid  mt-4 center">
+    <h2>Dr.{{form.user.first_name}} {{form.user.last_name}}</h2>
+    <p>Specialist : {{form.specialist}}</p>
+    </div>
+    <div style:"float:left;">
+    <p>Age : {{form.age}}</p>
+    <p>About : {{form.about}}</p>
+    </div>
+
+    <div style="float:right;">
+        <p>Contact : {{form.contact}}</p>
+        <p>Visting Address : {{form.address}}</p>
+    </div>
+    <p class='text-center'><a class="btn btn-danger btn-lg " href="#" role="button"> Book For Appointment </a></p>
+    </div>
+  </div>
+   {% endfor %}
+</section>
+
+<section>
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+      
+            <h3><span>health prediction system</span></h3>
+
+            <p class="footer-links">
+                <a href="home.html">Home</a>
+                |
+                <a href="#">Blog</a>
+                |
+                <a href="about2.html">About</a>
+                |
+                <a href="contact.html">Contact</a>
+            </p>
+
+            <p class="footer-company-name">© 2022 health prediction system.</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                  <p>Vijay Nagar</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+91 22-27782183</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@helthcare.com">support@helthcare.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the health prediction system </span>
+            A smart health prediction system is defined as a healthcare system that is intended to assist health professionals in their decision- making process regarding to medical situations.</p>
+            <div class="footer-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
