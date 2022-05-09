@@ -5,7 +5,7 @@ from . models import RegistrationForm, UpdateForm
 
 @admin.register(RegistrationForm)
 class User(admin.ModelAdmin):
-    list_display = ['id','user_type','contact','address','profile_image']
+    list_display = ['id','user','user_type','contact','address','profile_image']
 
 @admin.register(UpdateForm)
 class UserAdmin(admin.ModelAdmin):

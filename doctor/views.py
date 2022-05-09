@@ -1,15 +1,24 @@
+import imp
+from django.conf import settings
 from django.shortcuts import render,HttpResponseRedirect
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm,SetPasswordForm
 from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.models import User
+from patient.models import Appointment
+from django.core.mail import send_mail
+from health_prediction_system.settings import EMAIL_HOST_USER
+from patient.views import appointment
 from . models import RegistrationForm,UpdateForm
 from . forms import login_form
+from datetime import date, datetime
+from patient.models import UpdateForm
+
 
 def doctorpage(request):
     if request.user.is_authenticated:
-       return render(request,'doctor/dr.dashboard.html',{'username':request.user})
+        return render(request,'doctor/dr.dashboard.html',{'username':request.user})
     else:
         return HttpResponseRedirect('/login/')   
 
@@ -67,21 +76,21 @@ def loginform(request):
         fr = login_form()
     return render(request,'doctor/loginform.html',{'form':fr})  
 
-def user_change_password(request):
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-          fm=SetPasswordForm(user=request.user,data=request.POST)
-          if fm.is_valid():
-            fm.save()
-            update_session_auth_hash(request,fm.user)
-            messages.success(request,'Password change successfully!!')
-            return HttpResponseRedirect('/login/')
-        else:        
-           fm=SetPasswordForm(user=request.user)
-           print(request.user)
-        return render(request,'doctor/changepasslogin.html',{'form':fm})
-    else:
-         return HttpResponseRedirect('/') 
+# def user_change_password(request):
+#     if request.user.is_authenticated:
+#         if request.method == 'POST':
+#           fm=SetPasswordForm(user=request.user,data=request.POST)
+#           if fm.is_valid():
+#             fm.save()
+#             update_session_auth_hash(request,fm.user)
+#             messages.success(request,'Password change successfully!!')
+#             return HttpResponseRedirect('/login/')
+#         else:        
+#            fm=SetPasswordForm(user=request.user)
+#            print(request.user)
+#         return render(request,'doctor/changepasslogin.html',{'form':fm})
+#     else:
+#          return HttpResponseRedirect('/') 
 #with old password         
 def user_change_password_with(request):
     if request.user.is_authenticated:
@@ -144,7 +153,47 @@ def updatedetails(request):
         else:    
             return render(request,'doctor/updatedetails.html',{'username':request.user})
     else:
-        return HttpResponseRedirect('/login/')               
+        return HttpResponseRedirect('/login/')          
+
+def manage(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            appointment_id = request.POST.get("appointment-id")
+            print(appointment_id)
+            appointment = Appointment.objects.get(id=appointment_id)
+            appointment.accepted = True
+            email = request.POST.get("email")
+            accept = request.POST.get("date")
+            d2 =  date.today().strftime("%B %d, %Y")
+            dd=appointment.doctor_id.id
+            nm=UpdateForm.objects.get(pk=dd)
+            fname=nm.user.first_name 
+            lname=nm.user.last_name
+        
+            
+            
+            #appointment.sent_date= date,
+            appointment.accepted_date= str(accept)
+            appointment.save()
+
+            send_mail(
+            'About your appointment',
+            f"Timing : 10AM to 4PM \n Thanks for booking appointment. Your appointment is scheduled on date: {accept} with Dr.{fname} {lname}. \n Loves,\n From Doctor's Family", 
+            settings.EMAIL_HOST_USER,
+            ['chinnijain168@gmail.com'],
+            fail_silently=False, )
+            d2 =  date.today().strftime("%B %d, %Y")
+            messages.add_message(request, messages.SUCCESS, f"You accepted the appointment of {appointment.full_name} at {d2}")
+            
+            return HttpResponseRedirect(request.path)
+        else:
+            ii=UpdateForm.objects.filter(user=request.user)
+            for i in ii:
+                no=i.id
+            appointmentt=Appointment.objects.filter(doctor_id=no)
+            return render(request,'doctor/manage.html',{'username':request.user,'appointments':appointmentt})
+    else:
+        return HttpResponseRedirect('/login/')       
                           
          
                  

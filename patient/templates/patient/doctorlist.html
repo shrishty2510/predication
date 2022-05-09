@@ -11,6 +11,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'patient/css/footer.css' %}">
 </head>
+<style>
+    .parent{
+        border: 1px solid black;
+        margin: auto;
+        padding: 1rem 1rem;
+        text-align: center;
+        width:20%;
+    }
+    .child {
+      display: inline-block;
+      border: 2px solid white;
+      padding: 1rem 1rem;
+      vertical-align: middle;
+    }
+</style>
 <body>
 
 
@@ -21,11 +36,11 @@
             <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-user"></i>Health Prediction </a>
           </div>
           <ul class="nav navbar-nav" style="margin-left:150px;">
-            <li class=""><a href="{% url 'patient' %}"  style="color: red;">Home</a></li>
+            <li class=""><a href="{% url 'patient' %}">Home</a></li>
       
             
-            <li ><a href="#"> Search Doctor</a></li>
-            <li ><a href="Add Disease.html.html"> Search Disease</a></li>
+            <li ><a href="{% url 'doctorlist' %}" style="color: red;"> Search Doctor</a></li>
+            <li ><a href="#"> Search Disease</a></li>
            
             <li ><a href="{% url 'feedback' %}">Feedback</a></li>
             
@@ -55,23 +70,26 @@
 <section>
    {% for form in fm %}
 <div class="jumbotron" style="background-color:white;">
-  <div class="container" style="width:800px; border:2px solid grey; border-radius:10px; background-color:lightgrey;">
-    <div class='center'><img src="{{fm.image.url}}" alt="" , width="200px" height="200px" class="img-thumbnail img-responsive-fluid  mt-4 center">
-    <h2>Dr.{{form.user.first_name}} {{form.user.last_name}}</h2>
-    <p>Specialist : {{form.specialist}}</p>
-    </div>
-    <div style:"float:left;">
-    <p>Age : {{form.age}}</p>
-    <p>About : {{form.about}}</p>
+  <div class="container parent" style="width:800px; border:3px solid rgb(204, 86, 100); border-radius:10px; background-color: rgb(245, 237, 238);">
+    <div class='child' style='float:left;'>
+    <img src="{{form.image.url}}" alt="" , width="200px" height="200px" class="img-thumbnail img-responsive-fluid  mt-4 center">
+    <h2 class='text-center'>Dr.{{form.user.first_name}} {{form.user.last_name}}</h2>
+    <p  style="margin:0; padding:0;" class='text-center'>Specialist : {{form.specialist}}</p>
+    <p style="margin:0; padding:0;">Age : {{form.age}}</p>
     </div>
 
-    <div style="float:right;">
+    <div class='child'  style='float:right; margin-top:40px;'>
+      <p class='text-center'>Application no. :{{form.id}}</p>  
         <p>Contact : {{form.contact}}</p>
         <p>Visting Address : {{form.address}}</p>
+        <p class='text-center'><a class="btn btn-danger btn-lg " href="{% url 'appointment' form.id %}" role="button"> Book For Appointment </a>
+        </p>
     </div>
-    <p class='text-center'><a class="btn btn-danger btn-lg " href="#" role="button"> Book For Appointment </a></p>
+    {% comment %} <small>About : {{form.about}} </small>  {% endcomment %}
+
     </div>
-  </div>
+    
+    </div>
    {% endfor %}
 </section>
 

@@ -1,7 +1,7 @@
 
 from django.shortcuts import render,HttpResponseRedirect
 from django.contrib import messages
-from patient.models import Feedback
+from patient.models import Feedback,Appointment
 from doctor.models import UpdateForm
 
 def patient_dashboard(request):
@@ -31,7 +31,37 @@ def doctorlist(request):
     else:
         return HttpResponseRedirect('/login/')     
 
+def appointment(request,id):
+  if request.user.is_authenticated:
+    if request.method == 'POST':
+        da=UpdateForm.objects.get(pk=id)
+        print(da)
+        fname = request.POST.get("fullname")
+        email = request.POST.get("email")
+        mobile = request.POST.get("contact")
+        message = request.POST.get("message")
 
+        appointment = Appointment.objects.create(
+            full_name=fname,
+            email=email,
+            contact=mobile,
+            request=message,
+            doctor_id=da
+        )
+
+        appointment.save()
+
+        messages.add_message(request, messages.SUCCESS, f"Thanks {request.user} !! For making an appointment, we will email you ASAP!")
+        return HttpResponseRedirect("/user/patient/")     
+    else:    
+        return render(request,'patient/appointment.html',{'username':request.user,'pk':id})
+  else:
+    return HttpResponseRedirect('/login/')    
+
+    
+
+
+       
 
 
 # Create your views here.

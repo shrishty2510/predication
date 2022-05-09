@@ -35,7 +35,7 @@
       <ul class="nav navbar-nav" style="margin-left:150px;">
         <li class=""><a href="{% url 'doctor' %}" >Home</a></li>
         <li><a href="{% url 'patientlist' %}" style="color: red;">Patient List </a></li>
-        <li><a href="#">Appointments</a></li>
+        <li><a href="{% url 'manage' %}">Appointments</a></li>
         <li><a href="{% url 'updatedetails' %}" >My Details </a></li>
   
         
@@ -88,7 +88,7 @@
                         {{p.user.email}}
                     </td>
                     <td>{{p.contact}}</td>
-                    <td> <a href="#" target="__blank" class="btn btn-danger">Call</a> </td>
+                    <td> <a href="#" target="__blank" class="btn btn-danger">Delete</a> </td>
                   </tr>
                 </tbody>
               </table>

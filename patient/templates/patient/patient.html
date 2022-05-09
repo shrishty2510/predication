@@ -10,6 +10,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'patient/css/footer.css' %}">
+  <style>
+    .success{
+        color:green;
+        font-size:30px;
+        text-align: center;
+      }
+   
+</style>
 </head>
 <body>
 
@@ -23,8 +31,8 @@
       <li class=""><a href="{% url 'patient' %}"  style="color: red;">Home</a></li>
 
       
-      <li ><a href="#"> Search Doctor</a></li>
-      <li ><a href="{% url 'doctorlist' %}"> Search Disease</a></li>
+      <li ><a href="{% url 'doctorlist' %}"> Search Doctor</a></li>
+      <li ><a href="#"> Search Disease</a></li>
      
       <li ><a href="{% url 'feedback' %}">Feedback</a></li>
       
@@ -49,8 +57,7 @@
     
   </div>
 </nav>
-
-<marquee width="100%" direction="left" height="15px" behavior="alternative" scrollamount='20'
+<marquee width="90%" direction="left" height="15px" behavior="alternative" scrollamount='20'
       style="color:rgb(0, 0, 0); font-size: 15px; text-align: center; word-spacing:1.6em; line-height: 1.2;" >
      <b> Welcome To Patient Dashboard </b>
     </marquee>
@@ -86,6 +93,11 @@
     </a>
   </div>
 </div>
+{% if messages %}
+{% for message in messages  %}
+<p {% if message.tags %} class='{{ message.tags}}' {% endif %}> <i>{{message}}</i> </p>
+{% endfor %}
+{% endif %}    
 
 
 <footer class="footer-distributed">

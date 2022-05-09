@@ -18,6 +18,7 @@ from django.urls import path,include
 from doctor import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 from django.views.static import serve
 from django.conf.urls import url
@@ -32,8 +33,12 @@ urlpatterns = [
     path('doctor/',views.doctorpage,name='doctor'),
     path('patient_list/',views.patient_list,name='patientlist'),
     path('update_details/',views.updatedetails,name='updatedetails'),
-    path('change_password/',views.user_change_password,name='changepasslog'),
+    path('manage_appointments/',views.manage,name='manage'),
     path('changePassword/',views.user_change_password_with,name='changepasspro'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='core/password_reset.html'), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='core/password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="core/password_reset_confirm.html"), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='core/password_reset_complete.html'), name='password_reset_complete'),      
     url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
